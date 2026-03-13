@@ -1,10 +1,29 @@
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
 
-const FOOTER_LINKS = {
-  Product: ["Features", "Pricing", "Changelog", "Documentation"],
-  Company: ["About", "Blog", "Careers", "Contact"],
-  Legal: ["Privacy Policy", "Terms of Service", "Cookie Policy"],
+type FooterLink = {
+  label: string;
+  href: string;
+};
+
+const FOOTER_LINKS: Record<string, FooterLink[]> = {
+  Product: [
+    { label: "Features", href: "/features" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Changelog", href: "/changelog" },
+    { label: "Documentation", href: "/documentation" },
+  ],
+  Company: [
+    { label: "About", href: "/about" },
+    { label: "Blog", href: "/blog" },
+    { label: "Careers", href: "/careers" },
+    { label: "Contact", href: "/contact" },
+  ],
+  Legal: [
+    { label: "Privacy Policy", href: "/privacy-policy" },
+    { label: "Terms of Service", href: "/terms-of-service" },
+    { label: "Cookie Policy", href: "/cookie-policy" },
+  ],
 };
 
 export function Footer() {
@@ -29,13 +48,13 @@ export function Footer() {
             <div key={heading}>
               <h3 className="text-sm font-semibold">{heading}</h3>
               <ul className="mt-4 space-y-2">
-                {links.map((label) => (
-                  <li key={label}>
+                {links.map((link) => (
+                  <li key={link.label}>
                     <Link
-                      href="#"
+                      href={link.href}
                       className="text-sm text-muted-foreground hover:text-foreground"
                     >
-                      {label}
+                      {link.label}
                     </Link>
                   </li>
                 ))}
