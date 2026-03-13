@@ -79,7 +79,7 @@ export default function ResetPasswordPage() {
         <Button
           className="w-full"
           style={{ height: "2.625rem" }}
-          onClick={() => router.push("/auth/login")}
+          onClick={() => router.push("/login")}
         >
           Sign in
         </Button>
@@ -187,7 +187,7 @@ export default function ResetPasswordPage() {
 
       <div className="text-center">
         <Link
-          href="/auth/login"
+          href="/login"
           className="text-sm text-muted-foreground hover:text-foreground"
         >
           Back to login

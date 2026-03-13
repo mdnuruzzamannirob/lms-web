@@ -35,7 +35,7 @@ export default function ForgotPasswordPage() {
     try {
       await forgotPassword(data).unwrap();
       const encoded = encodeURIComponent(data.email);
-      router.push(`/auth/verify-reset-otp?email=${encoded}`);
+      router.push(`/verify-reset-otp?email=${encoded}`);
     } catch (err: unknown) {
       const apiErr = err as { data?: { message?: string } };
       setServerError(
@@ -93,7 +93,7 @@ export default function ForgotPasswordPage() {
 
       <div className="text-center">
         <Link
-          href="/auth/login"
+          href="/login"
           className="flex items-center justify-center gap-1 text-sm text-muted-foreground hover:text-foreground"
         >
           <ArrowLeft className="size-3.5" />

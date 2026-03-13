@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const AUTH_ROUTES = [
-  "/auth/login",
-  "/auth/register",
-  "/auth/verify-email",
-  "/auth/resend-otp",
-  "/auth/forgot-password",
-  "/auth/verify-reset-otp",
-  "/auth/reset-password",
+  "/login",
+  "/register",
+  "/verify-email",
+  "/resend-otp",
+  "/forgot-password",
+  "/verify-reset-otp",
+  "/reset-password",
 ];
 
 const PROTECTED_ROUTES = ["/dashboard"];
@@ -30,7 +30,7 @@ export function proxy(request: NextRequest) {
 
   // Unauthenticated users cannot access protected routes
   if (!refreshToken && isProtectedRoute) {
-    const loginUrl = new URL("/auth/login", request.url);
+    const loginUrl = new URL("/login", request.url);
     loginUrl.searchParams.set("callbackUrl", pathname);
     return NextResponse.redirect(loginUrl);
   }

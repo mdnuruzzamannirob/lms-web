@@ -72,12 +72,12 @@ export function Navbar() {
           </button>
 
           <div className="hidden sm:flex sm:items-center sm:gap-1.5">
-            <Link href="/auth/login">
+            <Link href="/login">
               <Button variant="ghost" size="sm">
                 Sign in
               </Button>
             </Link>
-            <Link href="/auth/register">
+            <Link href="/register">
               <Button size="sm">Get Started</Button>
             </Link>
           </div>
@@ -114,12 +114,12 @@ export function Navbar() {
               </li>
             ))}
             <li className="pt-2 flex gap-2 border-t border-border">
-              <Link href="/auth/login" className="flex-1">
+              <Link href="/login" className="flex-1">
                 <Button variant="outline" size="sm" className="w-full">
                   Sign in
                 </Button>
               </Link>
-              <Link href="/auth/register" className="flex-1">
+              <Link href="/register" className="flex-1">
                 <Button size="sm" className="w-full">
                   Get Started
                 </Button>

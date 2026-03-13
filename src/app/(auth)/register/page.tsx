@@ -46,7 +46,7 @@ export default function RegisterPage() {
     try {
       await register(data).unwrap();
       const encoded = encodeURIComponent(data.email);
-      router.push(`/auth/verify-email?email=${encoded}`);
+      router.push(`/verify-email?email=${encoded}`);
     } catch (err: unknown) {
       const apiErr = err as { data?: { message?: string } };
       setServerError(
@@ -159,7 +159,7 @@ export default function RegisterPage() {
       <p className="text-center text-sm text-muted-foreground">
         Already have an account?{" "}
         <Link
-          href="/auth/login"
+          href="/login"
           className="font-medium text-primary hover:underline"
         >
           Sign in

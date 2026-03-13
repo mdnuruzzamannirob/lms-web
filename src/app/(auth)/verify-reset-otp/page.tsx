@@ -48,7 +48,7 @@ export default function VerifyResetOtpPage() {
     try {
       const res = await verifyResetOtp({ email, otp }).unwrap();
       const encoded = encodeURIComponent(res.data.resetToken);
-      router.push(`/auth/reset-password?token=${encoded}`);
+      router.push(`/reset-password?token=${encoded}`);
     } catch (err: unknown) {
       const apiErr = err as { data?: { message?: string } };
       setServerError(apiErr.data?.message ?? "Invalid or expired code.");
@@ -137,7 +137,7 @@ export default function VerifyResetOtpPage() {
           {isResending ? "Sending…" : "Didn't receive a code? Resend"}
         </button>
         <Link
-          href="/auth/forgot-password"
+          href="/forgot-password"
           className="flex items-center gap-1 text-muted-foreground hover:text-foreground"
         >
           <ArrowLeft className="size-3.5" />

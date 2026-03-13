@@ -126,7 +126,7 @@ export default function HomePage() {
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-              <Link href="/auth/register">
+              <Link href="/register">
                 <Button className="h-11 gap-2 px-6">
                   Get Started
                   <ArrowRight className="size-4" />
@@ -237,7 +237,7 @@ export default function HomePage() {
               their operations.
             </p>
             <div className="mt-8">
-              <Link href="/auth/register">
+              <Link href="/register">
                 <Button className="h-11 gap-2 px-8">
                   Start for free
                   <ArrowRight className="size-4" />

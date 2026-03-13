@@ -149,7 +149,7 @@ export default function VerifyEmailPage() {
           {isResending ? "Sending…" : "Didn't receive a code? Resend"}
         </button>
         <Link
-          href="/auth/login"
+          href="/login"
           className="flex items-center gap-1 text-muted-foreground hover:text-foreground"
         >
           <ArrowLeft className="size-3.5" />

@@ -57,7 +57,7 @@ export default function ResendOtpPage() {
   };
 
   const backHref =
-    type === "password_reset" ? "/auth/verify-reset-otp" : "/auth/verify-email";
+    type === "password_reset" ? "/verify-reset-otp" : "/verify-email";
 
   if (success) {
     return (
@@ -76,7 +76,7 @@ export default function ResendOtpPage() {
         </Link>
         <div className="text-center">
           <Link
-            href="/auth/login"
+            href="/login"
             className="flex items-center justify-center gap-1 text-sm text-muted-foreground hover:text-foreground"
           >
             <ArrowLeft className="size-3.5" />
@@ -134,7 +134,7 @@ export default function ResendOtpPage() {
 
       <div className="text-center">
         <Link
-          href="/auth/login"
+          href="/login"
           className="flex items-center justify-center gap-1 text-sm text-muted-foreground hover:text-foreground"
         >
           <ArrowLeft className="size-3.5" />
