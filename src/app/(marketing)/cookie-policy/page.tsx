@@ -42,6 +42,11 @@ export default function CookiePolicyPage() {
           Last updated: March 13, 2026
         </p>
 
+        <div className="mt-6 rounded-xl border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
+          You can control cookies through your browser settings. Blocking
+          essential cookies may affect sign-in and session continuity.
+        </div>
+
         <div className="mt-10 space-y-5">
           {COOKIE_TYPES.map((section) => (
             <article

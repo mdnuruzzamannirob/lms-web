@@ -1,42 +1,23 @@
 import type { Metadata } from "next";
+import { BlogListClient } from "@/components/marketing/blog-list-client";
+import { blogPosts } from "@/lib/marketing-content";
 
 export const metadata: Metadata = {
   title: "Blog",
   description: "Latest updates and product notes from LibraryMS.",
 };
 
-const POSTS = [
-  {
-    title: "Launching a modern library workflow",
-    excerpt:
-      "How digital-first circulation, reservations, and reminders improve library operations.",
-    date: "March 2026",
-  },
-  {
-    title: "Designing better overdue recovery",
-    excerpt:
-      "Practical strategies for balancing member experience with policy enforcement.",
-    date: "February 2026",
-  },
-  {
-    title: "What to track in library analytics",
-    excerpt:
-      "The core metrics that reveal usage trends, inventory pressure, and service quality.",
-    date: "January 2026",
-  },
-];
-
-const CATEGORIES = [
-  "Product Updates",
-  "Library Operations",
-  "Security",
-  "Implementation Guides",
+const METRICS = [
+  { label: "Articles", value: "40+" },
+  { label: "Topics", value: "12" },
+  { label: "Guides", value: "18" },
+  { label: "Contributors", value: "9" },
 ];
 
 export default function BlogPage() {
   return (
     <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
           Company
         </p>
@@ -44,37 +25,23 @@ export default function BlogPage() {
           Blog
         </h1>
         <p className="mt-4 text-lg text-muted-foreground">
-          Product updates, best practices, and implementation notes from the
-          LibraryMS team.
+          Real implementation stories, product updates, and operational
+          strategies from the LibraryMS team.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-2">
-          {CATEGORIES.map((category) => (
-            <span
-              key={category}
-              className="rounded-full border border-border bg-muted px-3 py-1 text-xs text-muted-foreground"
-            >
-              {category}
-            </span>
-          ))}
-        </div>
-
-        <div className="mt-12 space-y-4">
-          {POSTS.map((post) => (
+        <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+          {METRICS.map((item) => (
             <article
-              key={post.title}
-              className="rounded-xl border border-border bg-card p-6"
+              key={item.label}
+              className="rounded-xl border border-border bg-card p-4 text-center"
             >
-              <p className="text-xs font-medium uppercase tracking-wide text-primary">
-                {post.date}
-              </p>
-              <h2 className="mt-2 text-xl font-semibold">{post.title}</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {post.excerpt}
-              </p>
+              <p className="text-2xl font-bold text-primary">{item.value}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{item.label}</p>
             </article>
           ))}
         </div>
+
+        <BlogListClient posts={blogPosts} />
       </div>
     </section>
   );

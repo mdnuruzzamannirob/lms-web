@@ -46,6 +46,12 @@ export default function TermsOfServicePage() {
           Last updated: March 13, 2026
         </p>
 
+        <div className="mt-6 rounded-xl border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
+          These terms summarize service expectations and responsibilities.
+          Specific commercial and compliance obligations are defined in your
+          signed agreement where applicable.
+        </div>
+
         <div className="mt-10 space-y-5">
           {TERMS.map((section) => (
             <article

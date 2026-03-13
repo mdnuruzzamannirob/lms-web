@@ -40,6 +40,27 @@ const DOC_SECTIONS = [
   },
 ];
 
+const ROADMAP = [
+  {
+    step: "Step 1",
+    title: "Environment setup",
+    detail:
+      "Configure env variables, DB connection, SMTP, and optional Stripe/Cloudinary keys.",
+  },
+  {
+    step: "Step 2",
+    title: "Seed and verification",
+    detail:
+      "Seed default data, verify auth flow, and confirm role permissions in staging.",
+  },
+  {
+    step: "Step 3",
+    title: "Operational rollout",
+    detail:
+      "Onboard staff, import existing records, and monitor reports for policy tuning.",
+  },
+];
+
 export default function DocumentationPage() {
   return (
     <section className="py-16 md:py-24">
@@ -69,6 +90,24 @@ export default function DocumentationPage() {
               </p>
             </article>
           ))}
+        </div>
+
+        <div className="mt-10 rounded-xl border border-border bg-card p-6">
+          <h3 className="text-xl font-semibold">Implementation roadmap</h3>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            {ROADMAP.map((item) => (
+              <article
+                key={item.step}
+                className="rounded-lg border border-border bg-background p-4"
+              >
+                <p className="text-xs font-medium text-primary">{item.step}</p>
+                <h4 className="mt-1 text-sm font-semibold">{item.title}</h4>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                  {item.detail}
+                </p>
+              </article>
+            ))}
+          </div>
         </div>
 
         <div className="mt-14 rounded-2xl border border-border bg-muted/40 p-8 text-center">

@@ -30,6 +30,13 @@ const BENEFITS = [
   "Learning budget and modern engineering tools",
 ];
 
+const PROCESS = [
+  "Introductory call",
+  "Role-focused assessment",
+  "Team interview",
+  "Offer and onboarding",
+];
+
 export default function CareersPage() {
   return (
     <section className="py-16 md:py-24">
@@ -66,6 +73,17 @@ export default function CareersPage() {
               <li key={item}>• {item}</li>
             ))}
           </ul>
+        </div>
+
+        <div className="mt-5 rounded-xl border border-border bg-card p-6">
+          <h3 className="text-lg font-semibold">Hiring process</h3>
+          <ol className="mt-3 space-y-2 text-sm text-muted-foreground">
+            {PROCESS.map((step, idx) => (
+              <li key={step}>
+                {idx + 1}. {step}
+              </li>
+            ))}
+          </ol>
         </div>
       </div>
     </section>

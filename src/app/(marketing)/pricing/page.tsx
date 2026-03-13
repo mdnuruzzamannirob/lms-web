@@ -1,50 +1,37 @@
 import type { Metadata } from "next";
-import { Check } from "lucide-react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { PricingPlansClient } from "@/components/marketing/pricing-plans-client";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description: "Simple and transparent pricing for LibraryMS.",
 };
 
-const PLANS = [
+const COMPARISON = [
   {
-    name: "Starter",
-    price: "$29",
-    description: "For small libraries starting digital operations.",
-    features: [
-      "Up to 2,000 books",
-      "Up to 500 members",
-      "Borrow/return workflows",
-      "Basic reports",
-      "Email support",
-    ],
+    feature: "Books limit",
+    starter: "3,000",
+    growth: "30,000",
+    enterprise: "Unlimited",
   },
   {
-    name: "Growth",
-    price: "$79",
-    description: "For growing institutions with higher daily volume.",
-    features: [
-      "Up to 20,000 books",
-      "Up to 5,000 members",
-      "Reservations and fines",
-      "Advanced analytics",
-      "Priority support",
-    ],
-    highlighted: true,
+    feature: "Members",
+    starter: "800",
+    growth: "8,000",
+    enterprise: "Unlimited",
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    description: "For networks, campuses, and large organizations.",
-    features: [
-      "Unlimited catalog scale",
-      "Multi-branch support",
-      "Dedicated onboarding",
-      "SLA and security review",
-      "Custom integration support",
-    ],
+    feature: "Reservations & fines",
+    starter: "Basic",
+    growth: "Advanced",
+    enterprise: "Advanced + custom policies",
+  },
+  {
+    feature: "Support SLA",
+    starter: "Standard",
+    growth: "Priority",
+    enterprise: "Dedicated",
   },
 ];
 
@@ -65,44 +52,56 @@ export default function PricingPage() {
           </p>
         </div>
 
-        <div className="mt-14 grid gap-5 lg:grid-cols-3">
-          {PLANS.map((plan) => (
-            <article
-              key={plan.name}
-              className={`rounded-xl border bg-card p-6 ${
-                plan.highlighted
-                  ? "border-primary shadow-[0_0_0_1px_var(--color-primary)]"
-                  : "border-border"
-              }`}
-            >
-              <h2 className="text-xl font-semibold">{plan.name}</h2>
-              <p className="mt-2 text-sm text-muted-foreground">
-                {plan.description}
-              </p>
-              <p className="mt-5 text-3xl font-bold tracking-tight">
-                {plan.price}
-              </p>
-              <p className="mt-1 text-xs text-muted-foreground">per month</p>
+        <PricingPlansClient />
 
-              <ul className="mt-6 space-y-2">
-                {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm">
-                    <Check className="mt-0.5 size-4 text-primary" />
-                    <span className="text-muted-foreground">{feature}</span>
-                  </li>
+        <div className="mt-14 rounded-xl border border-border bg-card p-6">
+          <h2 className="text-xl font-semibold">Plan comparison</h2>
+          <div className="mt-4 overflow-x-auto">
+            <table className="min-w-full text-left text-sm">
+              <thead>
+                <tr className="border-b border-border text-muted-foreground">
+                  <th className="py-2 pr-4 font-medium">Feature</th>
+                  <th className="py-2 pr-4 font-medium">Starter</th>
+                  <th className="py-2 pr-4 font-medium">Growth</th>
+                  <th className="py-2 font-medium">Enterprise</th>
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARISON.map((row) => (
+                  <tr key={row.feature} className="border-b border-border/60">
+                    <td className="py-2 pr-4 text-foreground">{row.feature}</td>
+                    <td className="py-2 pr-4 text-muted-foreground">
+                      {row.starter}
+                    </td>
+                    <td className="py-2 pr-4 text-muted-foreground">
+                      {row.growth}
+                    </td>
+                    <td className="py-2 text-muted-foreground">
+                      {row.enterprise}
+                    </td>
+                  </tr>
                 ))}
-              </ul>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-              <Link href="/contact" className="mt-6 block">
-                <Button
-                  className="w-full"
-                  variant={plan.highlighted ? "default" : "outline"}
-                >
-                  {plan.highlighted ? "Start Growth" : "Contact sales"}
-                </Button>
-              </Link>
-            </article>
-          ))}
+        <div className="mt-10 rounded-2xl border border-border bg-muted/40 p-8 text-center">
+          <h3 className="text-2xl font-bold tracking-tight">
+            Need help choosing the right plan?
+          </h3>
+          <p className="mt-2 text-sm text-muted-foreground">
+            We can recommend plan size based on your catalog, member volume, and
+            operational goals.
+          </p>
+          <div className="mt-6 flex justify-center gap-3">
+            <Link href="/contact">
+              <Button>Talk to sales</Button>
+            </Link>
+            <Link href="/faq">
+              <Button variant="outline">Read FAQ</Button>
+            </Link>
+          </div>
         </div>
       </div>
     </section>

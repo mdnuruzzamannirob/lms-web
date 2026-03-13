@@ -60,6 +60,13 @@ const MILESTONES = [
   },
 ];
 
+const IMPACT = [
+  { label: "Libraries using LibraryMS", value: "120+" },
+  { label: "Catalog records managed", value: "2.1M+" },
+  { label: "Borrow transactions processed", value: "8.5M+" },
+  { label: "Average setup time", value: "< 3 days" },
+];
+
 export default function AboutPage() {
   return (
     <section className="py-16 md:py-24">
@@ -132,6 +139,29 @@ export default function AboutPage() {
                 </h4>
                 <p className="mt-2 text-sm text-muted-foreground">
                   {milestone.description}
+                </p>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-10 rounded-2xl border border-border bg-card p-8">
+          <h3 className="text-2xl font-bold tracking-tight">
+            Operational impact
+          </h3>
+          <p className="mt-2 text-sm text-muted-foreground">
+            We focus on outcomes libraries can measure across circulation,
+            membership engagement, and service consistency.
+          </p>
+          <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-4">
+            {IMPACT.map((item) => (
+              <article
+                key={item.label}
+                className="rounded-xl border border-border bg-background p-4 text-center"
+              >
+                <p className="text-xl font-bold text-primary">{item.value}</p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {item.label}
                 </p>
               </article>
             ))}

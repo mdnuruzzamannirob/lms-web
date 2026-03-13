@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { ContactForm } from "@/components/marketing/contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -29,6 +30,13 @@ const INQUIRIES = [
   "Sales and pricing consultation",
   "Technical support and implementation",
   "Partnership and integration opportunities",
+];
+
+const RESPONSE_STEPS = [
+  "Initial response within one business day",
+  "Requirement discovery and current process review",
+  "Recommended rollout plan and timeline",
+  "Demo, onboarding, and implementation handoff",
 ];
 
 export default function ContactPage() {
@@ -62,6 +70,8 @@ export default function ContactPage() {
         </div>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
+          <ContactForm />
+
           <article className="rounded-xl border border-border bg-card p-6">
             <h3 className="text-lg font-semibold">Inquiry types</h3>
             <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
@@ -79,6 +89,14 @@ export default function ContactPage() {
               Critical incident responses are prioritized for active enterprise
               customers.
             </p>
+            <h4 className="mt-5 text-sm font-semibold text-foreground">
+              What happens next
+            </h4>
+            <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
+              {RESPONSE_STEPS.map((step) => (
+                <li key={step}>• {step}</li>
+              ))}
+            </ul>
           </article>
         </div>
       </div>

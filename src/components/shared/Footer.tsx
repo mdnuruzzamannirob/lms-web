@@ -18,6 +18,7 @@ const FOOTER_LINKS: Record<string, FooterLink[]> = {
     { label: "Blog", href: "/blog" },
     { label: "Careers", href: "/careers" },
     { label: "Contact", href: "/contact" },
+    { label: "FAQ", href: "/faq" },
   ],
   Legal: [
     { label: "Privacy Policy", href: "/privacy-policy" },

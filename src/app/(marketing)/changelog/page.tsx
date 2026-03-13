@@ -35,6 +35,12 @@ const RELEASES = [
   },
 ];
 
+const UPCOMING = [
+  "Deeper branch-level analytics and comparative dashboards",
+  "Extended reservation lifecycle notifications",
+  "Expanded import tooling for legacy library datasets",
+];
+
 export default function ChangelogPage() {
   return (
     <section className="py-16 md:py-24">
@@ -71,6 +77,15 @@ export default function ChangelogPage() {
               </ul>
             </article>
           ))}
+        </div>
+
+        <div className="mt-10 rounded-xl border border-border bg-muted/40 p-6">
+          <h3 className="text-xl font-semibold">Coming next</h3>
+          <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+            {UPCOMING.map((item) => (
+              <li key={item}>• {item}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

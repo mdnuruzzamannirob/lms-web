@@ -68,6 +68,24 @@ const CORE_FEATURES = [
   },
 ];
 
+const USE_CASES = [
+  {
+    title: "School libraries",
+    detail:
+      "Manage student memberships, circulation spikes, and term-based borrowing policies.",
+  },
+  {
+    title: "Public libraries",
+    detail:
+      "Handle high-volume reservations, diverse member groups, and overdue follow-up at scale.",
+  },
+  {
+    title: "Academic institutions",
+    detail:
+      "Track heavy reference usage, research demand, and multi-role staff permissions.",
+  },
+];
+
 export default function FeaturesPage() {
   return (
     <section className="py-16 md:py-24">
@@ -116,6 +134,25 @@ export default function FeaturesPage() {
             <Link href="/pricing">
               <Button variant="outline">View pricing</Button>
             </Link>
+          </div>
+        </div>
+
+        <div className="mt-10 rounded-xl border border-border bg-card p-6">
+          <h3 className="text-xl font-semibold">
+            Built for real library contexts
+          </h3>
+          <div className="mt-4 grid gap-4 sm:grid-cols-3">
+            {USE_CASES.map((item) => (
+              <article
+                key={item.title}
+                className="rounded-lg border border-border bg-background p-4"
+              >
+                <h4 className="text-sm font-semibold">{item.title}</h4>
+                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
+                  {item.detail}
+                </p>
+              </article>
+            ))}
           </div>
         </div>
       </div>
