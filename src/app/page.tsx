@@ -10,7 +10,7 @@ import {
   ArrowRight,
   CheckCircle2,
 } from "lucide-react";
-import { Navbar } from "@/components/shared/Navbar";
+import { Header } from "@/components/shared/Header";
 import { Footer } from "@/components/shared/Footer";
 import { Button } from "@/components/ui/button";
 
@@ -96,7 +96,7 @@ const STEPS = [
 export default function HomePage() {
   return (
     <>
-      <Navbar />
+      <Header />
       <main>
         {/* ── Hero ── */}
         <section className="relative overflow-hidden py-24 md:py-36">

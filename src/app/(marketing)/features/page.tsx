@@ -68,92 +68,53 @@ const CORE_FEATURES = [
   },
 ];
 
-const USE_CASES = [
-  {
-    title: "School libraries",
-    detail:
-      "Manage student memberships, circulation spikes, and term-based borrowing policies.",
-  },
-  {
-    title: "Public libraries",
-    detail:
-      "Handle high-volume reservations, diverse member groups, and overdue follow-up at scale.",
-  },
-  {
-    title: "Academic institutions",
-    detail:
-      "Track heavy reference usage, research demand, and multi-role staff permissions.",
-  },
-];
-
 export default function FeaturesPage() {
   return (
-    <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
-            Product
-          </p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
-            Powerful features for modern libraries
-          </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            LibraryMS covers circulation, members, fines, reservations, reports,
-            and operational automation in a single system.
-          </p>
-        </div>
+    <section className="app-container py-10 md:py-16">
+      <div className="mx-auto max-w-3xl text-center">
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
+          Product
+        </p>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+          Powerful features for modern libraries
+        </h1>
+        <p className="mt-4 text-lg text-muted-foreground">
+          LibraryMS covers circulation, members, fines, reservations, reports,
+          and operational automation in a single system.
+        </p>
+      </div>
 
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {CORE_FEATURES.map(({ icon: Icon, title, description }) => (
-            <article
-              key={title}
-              className="rounded-xl border border-border bg-card p-6"
-            >
-              <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
-                <Icon className="size-5 text-primary" />
-              </div>
-              <h2 className="mt-4 text-base font-semibold">{title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {description}
-              </p>
-            </article>
-          ))}
-        </div>
+      <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        {CORE_FEATURES.map(({ icon: Icon, title, description }) => (
+          <article
+            key={title}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <div className="flex size-10 items-center justify-center rounded-lg bg-primary/10">
+              <Icon className="size-5 text-primary" />
+            </div>
+            <h2 className="mt-4 text-base font-semibold">{title}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {description}
+            </p>
+          </article>
+        ))}
+      </div>
 
-        <div className="mt-16 rounded-2xl border border-border bg-muted/40 p-8 text-center">
-          <h3 className="text-2xl font-bold tracking-tight">
-            Need a tailored walkthrough?
-          </h3>
-          <p className="mt-2 text-sm text-muted-foreground">
-            See how each module maps to your library operations and policies.
-          </p>
-          <div className="mt-6 flex justify-center gap-3">
-            <Link href="/contact">
-              <Button>Book a demo</Button>
-            </Link>
-            <Link href="/pricing">
-              <Button variant="outline">View pricing</Button>
-            </Link>
-          </div>
-        </div>
-
-        <div className="mt-10 rounded-xl border border-border bg-card p-6">
-          <h3 className="text-xl font-semibold">
-            Built for real library contexts
-          </h3>
-          <div className="mt-4 grid gap-4 sm:grid-cols-3">
-            {USE_CASES.map((item) => (
-              <article
-                key={item.title}
-                className="rounded-lg border border-border bg-background p-4"
-              >
-                <h4 className="text-sm font-semibold">{item.title}</h4>
-                <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-                  {item.detail}
-                </p>
-              </article>
-            ))}
-          </div>
+      <div className="mt-14 rounded-2xl border border-border bg-muted/40 p-8 text-center">
+        <h3 className="text-2xl font-bold tracking-tight">
+          Need a tailored walkthrough?
+        </h3>
+        <p className="mt-2 text-sm text-muted-foreground">
+          See how each module maps to your library operations and policies.
+        </p>
+        <div className="mt-6 flex justify-center gap-3">
+          <Link href="/contact">
+            <Button>Book a demo</Button>
+          </Link>
+          <Link href="/pricing">
+            <Button variant="outline">View pricing</Button>
+          </Link>
         </div>
       </div>
     </section>

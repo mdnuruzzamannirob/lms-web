@@ -34,36 +34,34 @@ const SECTIONS = [
 
 export default function PrivacyPolicyPage() {
   return (
-    <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-4xl px-4 sm:px-6">
-        <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
-          Legal
-        </p>
-        <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
-          Privacy Policy
-        </h1>
-        <p className="mt-4 text-sm text-muted-foreground">
-          Last updated: March 13, 2026
-        </p>
+    <section className="app-container py-10 md:py-16">
+      <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
+        Legal
+      </p>
+      <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+        Privacy Policy
+      </h1>
+      <p className="mt-4 text-sm text-muted-foreground">
+        Last updated: March 13, 2026
+      </p>
 
-        <div className="mt-6 rounded-xl border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
-          For data access or correction requests, contact your institution admin
-          first, or reach our support team at support@libraryms.com.
-        </div>
+      <div className="mt-6 rounded-xl border border-border bg-muted/40 p-4 text-sm text-muted-foreground">
+        For data access or correction requests, contact your institution admin
+        first, or reach our support team at support@libraryms.com.
+      </div>
 
-        <div className="mt-10 space-y-5">
-          {SECTIONS.map((section) => (
-            <article
-              key={section.title}
-              className="rounded-xl border border-border bg-card p-6"
-            >
-              <h2 className="text-lg font-semibold">{section.title}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                {section.body}
-              </p>
-            </article>
-          ))}
-        </div>
+      <div className="mt-10 space-y-5">
+        {SECTIONS.map((section) => (
+          <article
+            key={section.title}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <h2 className="text-lg font-semibold">{section.title}</h2>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+              {section.body}
+            </p>
+          </article>
+        ))}
       </div>
     </section>
   );

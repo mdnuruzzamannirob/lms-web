@@ -43,50 +43,48 @@ const UPCOMING = [
 
 export default function ChangelogPage() {
   return (
-    <section className="py-16 md:py-24">
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <div className="max-w-3xl">
-          <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
-            Product
-          </p>
-          <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
-            Changelog
-          </h1>
-          <p className="mt-4 text-lg text-muted-foreground">
-            Track platform improvements, fixes, and feature releases across
-            LibraryMS modules.
-          </p>
-        </div>
+    <section className="app-container py-10 md:py-16">
+      <div className="max-w-3xl">
+        <p className="text-xs font-medium uppercase tracking-[0.18em] text-primary">
+          Product
+        </p>
+        <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">
+          Changelog
+        </h1>
+        <p className="mt-4 text-lg text-muted-foreground">
+          Track platform improvements, fixes, and feature releases across
+          LibraryMS modules.
+        </p>
+      </div>
 
-        <div className="mt-12 space-y-5">
-          {RELEASES.map((release) => (
-            <article
-              key={release.version}
-              className="rounded-xl border border-border bg-card p-6"
-            >
-              <div className="flex items-center justify-between gap-3">
-                <h2 className="text-xl font-semibold">{release.version}</h2>
-                <span className="text-xs font-medium text-primary">
-                  {release.date}
-                </span>
-              </div>
-              <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                {release.items.map((item) => (
-                  <li key={item}>• {item}</li>
-                ))}
-              </ul>
-            </article>
+      <div className="mt-12 space-y-5">
+        {RELEASES.map((release) => (
+          <article
+            key={release.version}
+            className="rounded-xl border border-border bg-card p-6"
+          >
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="text-xl font-semibold">{release.version}</h2>
+              <span className="text-xs font-medium text-primary">
+                {release.date}
+              </span>
+            </div>
+            <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
+              {release.items.map((item) => (
+                <li key={item}>• {item}</li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+
+      <div className="mt-10 rounded-xl border border-border bg-muted/40 p-6">
+        <h3 className="text-xl font-semibold">Coming next</h3>
+        <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
+          {UPCOMING.map((item) => (
+            <li key={item}>• {item}</li>
           ))}
-        </div>
-
-        <div className="mt-10 rounded-xl border border-border bg-muted/40 p-6">
-          <h3 className="text-xl font-semibold">Coming next</h3>
-          <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
-            {UPCOMING.map((item) => (
-              <li key={item}>• {item}</li>
-            ))}
-          </ul>
-        </div>
+        </ul>
       </div>
     </section>
   );
