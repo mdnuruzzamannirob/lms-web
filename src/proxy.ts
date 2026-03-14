@@ -16,7 +16,7 @@ export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // httpOnly cookie set by the API server on login/verify-email
-  const refreshToken = request.cookies.get("refreshToken")?.value;
+  const refreshToken = request.cookies.get("accessToken")?.value;
 
   const isAuthRoute = AUTH_ROUTES.some((route) => pathname.startsWith(route));
   const isProtectedRoute = PROTECTED_ROUTES.some((route) =>

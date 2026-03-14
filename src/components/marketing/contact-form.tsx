@@ -38,7 +38,7 @@ export function ContactForm() {
     },
   });
 
-  const onSubmit = async (_data: ContactFormValues) => {
+  const onSubmit = async () => {
     await new Promise((resolve) => setTimeout(resolve, 700));
     setSubmitState("success");
     reset();

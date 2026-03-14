@@ -12,6 +12,40 @@ import type {
   User,
 } from "@/types/auth.types";
 
+// Fake user data for demo purposes
+const FAKE_USERS: Record<string, { password: string; user: User }> = {
+  "john@example.com": {
+    password: "password123",
+    user: {
+      id: "user_001",
+      name: "John Doe",
+      email: "john@example.com",
+      role: "user",
+      isActive: true,
+      isEmailVerified: true,
+      createdAt: "2024-01-15T10:30:00Z",
+      updatedAt: "2024-01-15T10:30:00Z",
+    },
+  },
+  "admin@example.com": {
+    password: "admin123",
+    user: {
+      id: "admin_001",
+      name: "Admin User",
+      email: "admin@example.com",
+      role: "admin",
+      isActive: true,
+      isEmailVerified: true,
+      createdAt: "2024-01-01T08:00:00Z",
+      updatedAt: "2024-01-01T08:00:00Z",
+    },
+  },
+};
+
+const generateFakeToken = (email: string): string => {
+  return `fake_token_${email}_${Date.now()}`;
+};
+
 export const authApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     register: build.mutation<ApiResponse<null>, RegisterRequest>({
@@ -33,11 +67,76 @@ export const authApi = baseApi.injectEndpoints({
       ApiResponse<{ accessToken: string; user: User }>,
       LoginRequest
     >({
-      query: (body) => ({ url: "/auth/login", method: "POST", body }),
+      queryFn: async (credentials) => {
+        // Simulate network delay
+        await new Promise((resolve) => setTimeout(resolve, 800));
+
+        const fakeUserData = FAKE_USERS[credentials.email];
+
+        if (!fakeUserData) {
+          return {
+            error: {
+              status: 401,
+              data: {
+                success: false,
+                statusCode: 401,
+                message: "Invalid email or password",
+                data: null,
+              },
+            },
+          };
+        }
+
+        if (fakeUserData.password !== credentials.password) {
+          return {
+            error: {
+              status: 401,
+              data: {
+                success: false,
+                statusCode: 401,
+                message: "Invalid email or password",
+                data: null,
+              },
+            },
+          };
+        }
+
+        const token = generateFakeToken(credentials.email);
+
+        // Set cookie for middleware to check
+        if (typeof document !== "undefined") {
+          document.cookie = `accessToken=${token}; path=/; max-age=86400`;
+        }
+
+        return {
+          data: {
+            success: true,
+            statusCode: 200,
+            message: "Login successful",
+            data: {
+              accessToken: token,
+              user: fakeUserData.user,
+            },
+          },
+        };
+      },
     }),
 
     logout: build.mutation<ApiResponse<null>, void>({
-      query: () => ({ url: "/auth/logout", method: "POST" }),
+      queryFn: async () => {
+        // Clear cookie
+        if (typeof document !== "undefined") {
+          document.cookie = "accessToken=; path=/; max-age=0";
+        }
+        return {
+          data: {
+            success: true,
+            statusCode: 200,
+            message: "Logout successful",
+            data: null,
+          },
+        };
+      },
     }),
 
     changePassword: build.mutation<ApiResponse<null>, ChangePasswordRequest>({
@@ -67,7 +166,7 @@ export const authApi = baseApi.injectEndpoints({
       query: (body) => ({ url: "/auth/reset-password", method: "POST", body }),
     }),
   }),
-  overrideExisting: false,
+  overrideExisting: true,
 });
 
 export const {
